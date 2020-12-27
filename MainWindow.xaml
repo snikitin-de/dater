@@ -38,7 +38,7 @@
         <Label Content="Separator:" HorizontalAlignment="Left" Margin="174,450,0,0" VerticalAlignment="Top"/>
         <Label Content="Output file:" HorizontalAlignment="Left" Margin="269,450,0,0" VerticalAlignment="Top"/>
         <TextBox Name="RowCountTextBox" HorizontalAlignment="Left" Margin="79,454,0,0" Text="1000" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewTextInput="RowCountTextBox_PreviewTextInput"/>
-        <TextBox HorizontalAlignment="Left" Margin="238,454,0,0" Text=";" TextWrapping="Wrap" VerticalAlignment="Top" Width="10"/>
-        <TextBox HorizontalAlignment="Left" Margin="339,454,0,0" Text="dataset.csv" TextWrapping="Wrap" VerticalAlignment="Top" Width="313"/>
+        <TextBox Name="SeparatorTextBox" HorizontalAlignment="Left" Margin="238,454,0,0" Text=";" TextWrapping="Wrap" VerticalAlignment="Top" Width="10" PreviewTextInput="SeparatorTextBox_PreviewTextInput"/>
+        <TextBox Name="OutputFileTextBox" HorizontalAlignment="Left" Margin="339,454,0,0" Text="dataset.csv" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" IsReadOnly="True"/>
     </Grid>
 </Window>

@@ -1,5 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using dater;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace WpfApp1
 {
@@ -15,6 +20,21 @@ namespace WpfApp1
         {
             InitializeComponent();
             cmbDataType.ItemsSource = dataTypes;
+        }
+
+        private void RowCountTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = !Validator.IsValidPositiveInt(((TextBox)sender).Text + e.Text);
+        }
+
+        private void SeparatorTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = !Validator.IsValidSeparator(((TextBox)sender).Text + e.Text);
+        }
+
+        private void GenerateButton_Click(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
 }
