@@ -33,12 +33,20 @@
                 <syncfusion:GridPercentColumn MappingName="MissingValues" HeaderText = "Missing Values" MinValue="0" MaxValue="100"/>
             </syncfusion:SfDataGrid.Columns>
         </syncfusion:SfDataGrid>
-        <Button Name="GenerateButton" Content="Generate" HorizontalAlignment="Left" Margin="672,444,0,0" VerticalAlignment="Top" Click="GenerateButton_Click" Height="36" Width="82"/>
-        <Label Content="Row count:" HorizontalAlignment="Left" Margin="10,450,0,0" VerticalAlignment="Top"/>
-        <Label Content="Separator:" HorizontalAlignment="Left" Margin="174,450,0,0" VerticalAlignment="Top"/>
-        <Label Content="Output file:" HorizontalAlignment="Left" Margin="269,450,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="RowCountTextBox" HorizontalAlignment="Left" Margin="79,454,0,0" Text="1000" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewTextInput="RowCountTextBox_PreviewTextInput"/>
-        <TextBox Name="SeparatorTextBox" HorizontalAlignment="Left" Margin="238,454,0,0" Text=";" TextWrapping="Wrap" VerticalAlignment="Top" Width="10" PreviewTextInput="SeparatorTextBox_PreviewTextInput"/>
-        <TextBox Name="OutputFileTextBox" HorizontalAlignment="Left" Margin="339,454,0,0" Text="dataset.csv" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" IsReadOnly="True"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <DockPanel LastChildFill="False" Grid.Row="1" Margin="10">
+                <Label Content="Row count:" DockPanel.Dock="Left" VerticalAlignment="Center" MaxWidth="150"/>
+                <TextBox Name="RowCountTextBox" DockPanel.Dock="Left" Text="1000" TextWrapping="Wrap" VerticalAlignment="Center" MaxWidth="50" PreviewTextInput="RowCountTextBox_PreviewTextInput"/>
+                <Label Content="Separator:" DockPanel.Dock="Left" VerticalAlignment="Center" MaxWidth="150"/>
+                <TextBox Name="SeparatorTextBox" DockPanel.Dock="Left" Text=";" TextWrapping="Wrap" VerticalAlignment="Center" MaxWidth="50" PreviewTextInput="SeparatorTextBox_PreviewTextInput"/>
+                <Label Content="Output file:" DockPanel.Dock="Left" VerticalAlignment="Center" MaxWidth="150"/>
+                <TextBox Name="OutputFileTextBox" DockPanel.Dock="Left" Text="dataset.csv" TextWrapping="Wrap" VerticalAlignment="Center" MaxWidth="250" Width="313" IsReadOnly="True"/>
+                <Button Name="GenerateButton" Content="Generate" DockPanel.Dock="Right" VerticalAlignment="Top" Click="GenerateButton_Click" Height="36" Width="82"/>
+            </DockPanel>
+        </Grid>
     </Grid>
 </Window>
