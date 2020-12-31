@@ -16,6 +16,23 @@
     </Window.DataContext>
 
     <Grid>
+        <ToolBar Height="24" VerticalAlignment="Top">
+            <MenuItem Click="FileButton_Click" x:Name="FileButton">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="File"/>
+                    </StackPanel>
+                </MenuItem.Header>
+                <MenuItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Open" x:Name="OpenButton" Click="OpenButton_Click"/>
+                        <MenuItem Header="Save" x:Name="SaveButton" Click="SaveButton_Click"/>
+                        <Separator/>
+                        <MenuItem Header="Exit" x:Name="ExitButton" Click="ExitButton_Click"/>
+                    </ContextMenu>
+                </MenuItem.ContextMenu>
+            </MenuItem>
+        </ToolBar>
         <syncfusion:SfDataGrid x:Name="dataGrid"
                                    ItemsSource="{Binding Columns}"
                                    AddNewRowPosition="Bottom"
@@ -26,27 +43,27 @@
                                    AllowSorting="True"
                                    ShowRowHeader="True"
                                    EditTrigger="OnTap"
-                                   SelectionMode="Single" Margin="0,0,0,56" >
-                <syncfusion:SfDataGrid.Columns>
-                    <syncfusion:GridTextColumn MappingName="ColumnTitle" HeaderText = "Column Title"/>
-                    <syncfusion:GridComboBoxColumn MappingName="DataType" HeaderText = "Data Type" x:Name="cmbDataType"/>
-                    <syncfusion:GridPercentColumn MappingName="MissingValues" HeaderText = "Missing Values" MinValue="0" MaxValue="100"/>
-                </syncfusion:SfDataGrid.Columns>
-            </syncfusion:SfDataGrid>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <DockPanel LastChildFill="False" Grid.Row="1" Margin="10">
-                    <Label Content="Row count:" DockPanel.Dock="Left" VerticalAlignment="Center" MaxWidth="150"/>
-                    <TextBox Name="RowCountTextBox" DockPanel.Dock="Left" Text="1000" TextWrapping="Wrap" VerticalAlignment="Center" MaxWidth="50" PreviewTextInput="RowCountTextBox_PreviewTextInput"/>
-                    <Label Content="Separator:" DockPanel.Dock="Left" VerticalAlignment="Center" MaxWidth="150"/>
-                    <TextBox Name="SeparatorTextBox" DockPanel.Dock="Left" Text=";" TextWrapping="Wrap" VerticalAlignment="Center" MaxWidth="50" PreviewTextInput="SeparatorTextBox_PreviewTextInput"/>
-                    <Label Content="Output file:" DockPanel.Dock="Left" VerticalAlignment="Center" MaxWidth="150"/>
-                    <TextBox Name="OutputFileTextBox" DockPanel.Dock="Left" VerticalAlignment="Center" Text="dataset.csv" TextWrapping="Wrap" MaxWidth="250" Width="290" IsReadOnly="True"/>
-                    <Button Name="GenerateButton" Content="Generate" DockPanel.Dock="Right" VerticalAlignment="Top" Click="GenerateButton_Click" Height="36" Width="82"/>
-                </DockPanel>
-            </Grid>
+                                   SelectionMode="Single" Margin="0,24,0,56" >
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:GridTextColumn MappingName="ColumnTitle" HeaderText = "Column Title"/>
+                <syncfusion:GridComboBoxColumn MappingName="DataType" HeaderText = "Data Type" x:Name="cmbDataType"/>
+                <syncfusion:GridPercentColumn MappingName="MissingValues" HeaderText = "Missing Values" MinValue="0" MaxValue="100"/>
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <DockPanel LastChildFill="False" Grid.Row="1" Margin="10">
+                <Label Content="Row count:" DockPanel.Dock="Left" VerticalAlignment="Center" MaxWidth="150"/>
+                <TextBox Name="RowCountTextBox" DockPanel.Dock="Left" Text="1000" TextWrapping="Wrap" VerticalAlignment="Center" MaxWidth="50" PreviewTextInput="RowCountTextBox_PreviewTextInput"/>
+                <Label Content="Separator:" DockPanel.Dock="Left" VerticalAlignment="Center" MaxWidth="150"/>
+                <TextBox Name="SeparatorTextBox" DockPanel.Dock="Left" Text=";" TextWrapping="Wrap" VerticalAlignment="Center" MaxWidth="50" PreviewTextInput="SeparatorTextBox_PreviewTextInput"/>
+                <Label Content="Output file:" DockPanel.Dock="Left" VerticalAlignment="Center" MaxWidth="150"/>
+                <TextBox Name="OutputFileTextBox" DockPanel.Dock="Left" VerticalAlignment="Center" Text="dataset.csv" TextWrapping="Wrap" MaxWidth="250" Width="290" IsReadOnly="True"/>
+                <Button Name="GenerateButton" Content="Generate" DockPanel.Dock="Right" VerticalAlignment="Top" Click="GenerateButton_Click" Height="36" Width="82"/>
+            </DockPanel>
+        </Grid>
     </Grid>
 </Window>
