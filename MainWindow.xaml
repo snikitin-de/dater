@@ -18,7 +18,7 @@
     <Grid>
         <syncfusion:SfDataGrid x:Name="dataGrid"
                                    ItemsSource="{Binding Columns}"
-                                   AddNewRowPosition="Top"
+                                   AddNewRowPosition="Bottom"
                                    ColumnSizer="Star"
                                    AllowEditing="True"
                                    AllowDeleting="True"
