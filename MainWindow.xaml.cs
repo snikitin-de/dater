@@ -34,7 +34,68 @@ namespace WpfApp1
 
         private void GenerateButton_Click(object sender, RoutedEventArgs e)
         {
-           
+        }
+
+        private void FileButton_Click(object sender, RoutedEventArgs e)
+        {
+            var addButton = sender as FrameworkElement;
+
+            if (addButton != null)
+            {
+                addButton.ContextMenu.IsOpen = true;
+            }
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            var metadata = new DatasetMetaInfo(int.Parse(RowCountTextBox.Text), SeparatorTextBox.Text, OutputFileTextBox.Text);
+            var config = new Config();
+
+            config.SaveConfig("dataset.json", metadata, dataGrid.DataContext);
+        }
+
+        private void OpenButton_Click(object sender, RoutedEventArgs e)
+        {
+            var config = new Config();
+
+            var json = config.LoadConfig("dataset.json");
+
+            if (json["RowCount"] != null)
+            {
+                RowCountTextBox.Text = json["RowCount"].ToString();
+            }
+
+            if (json["Separator"] != null)
+            {
+                SeparatorTextBox.Text = json["Separator"].ToString();
+            }
+
+            if (json["OutputFile"] != null)
+            {
+                OutputFileTextBox.Text = json["OutputFile"].ToString();
+            }
+
+            (dataGrid.DataContext as ColumnViewModel).Columns.Clear();
+
+            foreach (var column in json["Columns"])
+            {
+                if (column["ColumnTitle"] != null && column["DataType"] != null && column["MissingValues"] != null && column["Parameters"] != null)
+                {
+                    (dataGrid.DataContext as ColumnViewModel).Columns.Add(
+                        new ColumnInfo(
+                            column["ColumnTitle"].ToString(),
+                            column["DataType"].ToString(),
+                            int.Parse(column["MissingValues"].ToString()),
+                            column["Parameters"].ToString()
+                        )
+                    );
+                }
+            }
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
