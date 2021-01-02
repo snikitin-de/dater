@@ -1,10 +1,9 @@
 ﻿using dater;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using Microsoft.Win32;
 
 namespace WpfApp1
 {
@@ -50,8 +49,20 @@ namespace WpfApp1
         {
             var metadata = new DatasetMetaInfo(int.Parse(RowCountTextBox.Text), SeparatorTextBox.Text, OutputFileTextBox.Text);
             var config = new Config();
+            var saveDialog = new SaveFileDialog();
 
-            config.SaveConfig("dataset.json", metadata, dataGrid.DataContext);
+            saveDialog.FileName = "config";
+            saveDialog.DefaultExt = ".json";
+            saveDialog.Filter = "JSON|*.json";
+
+            bool? result = saveDialog.ShowDialog();
+
+            if (result == true)
+            {
+                string filename = saveDialog.FileName;
+
+                config.SaveConfig(filename, metadata, dataGrid.DataContext);
+            }
         }
 
         private void OpenButton_Click(object sender, RoutedEventArgs e)
