@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Windows;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -18,7 +19,19 @@ namespace dater
 
         public JObject LoadConfig(string path)
         {
-            return JObject.Parse(File.ReadAllText(path));
+            JObject json = null;
+
+            try
+            {
+                json = JObject.Parse(File.ReadAllText(path));
+            } catch (Newtonsoft.Json.JsonReaderException)
+            {
+                string applicationName = Application.ResourceAssembly.GetName().Name;
+
+                MessageBox.Show("Invalid JSON file!", applicationName, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
+            return json;
         }
     }
 }

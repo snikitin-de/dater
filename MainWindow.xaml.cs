@@ -77,52 +77,56 @@ namespace WpfApp1
 
                 var json = config.LoadConfig(filename);
 
-                if (json["RowCount"] != null)
+                if (json != null)
                 {
-                    string rowCount = json["RowCount"].ToString();
-
-                    if (Validator.IsValidPositiveInt(rowCount))
+                    if (json["RowCount"] != null)
                     {
-                        RowCountTextBox.Text = rowCount;
-                    } else
-                    {
-                        MessageBox.Show("Invalid row count value!", applicationName, MessageBoxButton.OK, MessageBoxImage.Warning);
-                    }  
-                }
+                        string rowCount = json["RowCount"].ToString();
 
-                if (json["Separator"] != null)
-                {
-                    string separator = json["Separator"].ToString();
-
-                    if (Validator.IsValidPositiveInt(separator))
-                    {
-                        SeparatorTextBox.Text = separator;
+                        if (Validator.IsValidPositiveInt(rowCount))
+                        {
+                            RowCountTextBox.Text = rowCount;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid row count value!", applicationName, MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Invalid separator value!", applicationName, MessageBoxButton.OK, MessageBoxImage.Warning);
-                    }
-                }
 
-                if (json["OutputFile"] != null)
-                {
-                    OutputFileTextBox.Text = json["OutputFile"].ToString();
-                }
+                    if (json["Separator"] != null)
+                    {
+                        string separator = json["Separator"].ToString();
+
+                        if (Validator.IsValidPositiveInt(separator))
+                        {
+                            SeparatorTextBox.Text = separator;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid separator value!", applicationName, MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                    }
+
+                    if (json["OutputFile"] != null)
+                    {
+                        OutputFileTextBox.Text = json["OutputFile"].ToString();
+                    }
 
                 (dataGrid.DataContext as ColumnViewModel).Columns.Clear();
 
-                foreach (var column in json["Columns"])
-                {
-                    if (column["ColumnTitle"] != null && column["DataType"] != null && column["MissingValues"] != null && column["Parameters"] != null)
+                    foreach (var column in json["Columns"])
                     {
-                        (dataGrid.DataContext as ColumnViewModel).Columns.Add(
-                            new ColumnInfo(
-                                column["ColumnTitle"].ToString(),
-                                column["DataType"].ToString(),
-                                int.Parse(column["MissingValues"].ToString()),
-                                column["Parameters"].ToString()
-                            )
-                        );
+                        if (column["ColumnTitle"] != null && column["DataType"] != null && column["MissingValues"] != null && column["Parameters"] != null)
+                        {
+                            (dataGrid.DataContext as ColumnViewModel).Columns.Add(
+                                new ColumnInfo(
+                                    column["ColumnTitle"].ToString(),
+                                    column["DataType"].ToString(),
+                                    int.Parse(column["MissingValues"].ToString()),
+                                    column["Parameters"].ToString()
+                                )
+                            );
+                        }
                     }
                 }
             }
