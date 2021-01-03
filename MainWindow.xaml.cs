@@ -71,7 +71,6 @@ namespace WpfApp1
             var config = new Config();
             var openDialog = new OpenFileDialog();
 
-
             if (openDialog.ShowDialog() == true)
             {
                 string filename = openDialog.FileName;
