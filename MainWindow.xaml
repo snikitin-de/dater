@@ -61,7 +61,7 @@
                 <Label Content="Separator:" DockPanel.Dock="Left" VerticalAlignment="Center" MaxWidth="150"/>
                 <TextBox Name="SeparatorTextBox" DockPanel.Dock="Left" Text=";" TextWrapping="Wrap" VerticalAlignment="Center" MaxWidth="50" PreviewTextInput="SeparatorTextBox_PreviewTextInput"/>
                 <Label Content="Output file:" DockPanel.Dock="Left" VerticalAlignment="Center" MaxWidth="150"/>
-                <TextBox Name="OutputFileTextBox" DockPanel.Dock="Left" VerticalAlignment="Center" Text="dataset.csv" TextWrapping="Wrap" MaxWidth="250" Width="290" IsReadOnly="True"/>
+                <TextBox Name="OutputFileTextBox" DockPanel.Dock="Left" VerticalAlignment="Center" Text="dataset.csv" TextWrapping="Wrap" MaxWidth="250" Width="290" IsReadOnly="True" MouseDoubleClick="OutputFileTextBox_MouseDoubleClick"/>
                 <Button Name="GenerateButton" Content="Generate" DockPanel.Dock="Right" VerticalAlignment="Top" Click="GenerateButton_Click" Height="36" Width="82"/>
             </DockPanel>
         </Grid>

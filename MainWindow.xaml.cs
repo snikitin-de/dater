@@ -136,5 +136,23 @@ namespace WpfApp1
         {
             Application.Current.Shutdown();
         }
+
+        private void OutputFileTextBox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var saveDialog = new SaveFileDialog();
+
+            saveDialog.FileName = "dataset";
+            saveDialog.DefaultExt = ".csv";
+            saveDialog.Filter = "CSV|*.csv";
+
+            bool? result = saveDialog.ShowDialog();
+
+            if (result == true)
+            {
+                string filename = saveDialog.FileName;
+
+                OutputFileTextBox.Text = filename;
+            }
+        }
     }
 }
