@@ -6,8 +6,6 @@ namespace dater
 {
     class Config
     {
-        object json;
-
         public void SaveConfig(string path, DatasetMetaInfo metadata, object columns)
         {
             var metadataJSON = JObject.Parse(JsonConvert.SerializeObject(metadata));
