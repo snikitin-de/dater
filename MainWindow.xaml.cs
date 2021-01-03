@@ -1,5 +1,4 @@
 ﻿using dater;
-using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -67,9 +66,11 @@ namespace WpfApp1
 
         private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
-            var config = new Config();
+            string applicationName = Application.ResourceAssembly.GetName().Name;
 
-            OpenFileDialog openDialog = new OpenFileDialog();
+            var config = new Config();
+            var openDialog = new OpenFileDialog();
+
 
             if (openDialog.ShowDialog() == true)
             {
@@ -79,12 +80,29 @@ namespace WpfApp1
 
                 if (json["RowCount"] != null)
                 {
-                    RowCountTextBox.Text = json["RowCount"].ToString();
+                    string rowCount = json["RowCount"].ToString();
+
+                    if (Validator.IsValidPositiveInt(rowCount))
+                    {
+                        RowCountTextBox.Text = rowCount;
+                    } else
+                    {
+                        MessageBox.Show("Invalid row count value!", applicationName, MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }  
                 }
 
                 if (json["Separator"] != null)
                 {
-                    SeparatorTextBox.Text = json["Separator"].ToString();
+                    string separator = json["Separator"].ToString();
+
+                    if (Validator.IsValidPositiveInt(separator))
+                    {
+                        SeparatorTextBox.Text = separator;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid separator value!", applicationName, MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
                 }
 
                 if (json["OutputFile"] != null)
