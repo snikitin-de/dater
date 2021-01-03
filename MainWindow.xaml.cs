@@ -97,7 +97,7 @@ namespace WpfApp1
                     {
                         string separator = json["Separator"].ToString();
 
-                        if (Validator.IsValidPositiveInt(separator))
+                        if (Validator.IsValidSeparator(separator))
                         {
                             SeparatorTextBox.Text = separator;
                         }
