@@ -7,7 +7,7 @@
         xmlns:syncfusionskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="WpfApp1.MainWindow"
         mc:Ignorable="d"
-        Title="Dater" Height="480" Width="840" MinHeight="480" MinWidth="640"
+        Title="Dater" Height="560" Width="840" MinHeight="480" MinWidth="640"
         WindowStartupLocation="CenterScreen"
         syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialLight}">
 
@@ -43,14 +43,14 @@
                                    AllowSorting="True"
                                    ShowRowHeader="True"
                                    EditTrigger="OnTap"
-                                   SelectionMode="Single" Margin="0,24,0,56" >
+                                   SelectionMode="Single" Margin="0,24,0,80" >
             <syncfusion:SfDataGrid.Columns>
                 <syncfusion:GridTextColumn MappingName="ColumnTitle" HeaderText = "Column Title"/>
                 <syncfusion:GridComboBoxColumn MappingName="DataType" HeaderText = "Data Type" x:Name="cmbDataType"/>
                 <syncfusion:GridPercentColumn MappingName="MissingValues" HeaderText = "Missing Values" MinValue="0" MaxValue="100"/>
             </syncfusion:SfDataGrid.Columns>
         </syncfusion:SfDataGrid>
-        <Grid>
+        <Grid Margin="0,0,0,24">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
@@ -64,6 +64,24 @@
                 <TextBox Name="OutputFileTextBox" DockPanel.Dock="Left" VerticalAlignment="Center" Text="dataset.csv" TextWrapping="Wrap" MaxWidth="250" Width="290" IsReadOnly="True" MouseDoubleClick="OutputFileTextBox_MouseDoubleClick"/>
                 <Button Name="GenerateButton" Content="Generate" DockPanel.Dock="Right" VerticalAlignment="Top" Click="GenerateButton_Click" Height="36" Width="82"/>
             </DockPanel>
+        </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StatusBar Grid.Row="1">
+                <StatusBar.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </StatusBar.ItemsPanel>
+                <TextBlock Name="ElapsedGenerationTimeLabel"></TextBlock>
+            </StatusBar>
         </Grid>
     </Grid>
 </Window>
