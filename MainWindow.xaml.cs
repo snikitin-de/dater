@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Win32;
+using System.IO;
+using System.Diagnostics;
 
 namespace WpfApp1
 {
@@ -32,6 +34,79 @@ namespace WpfApp1
 
         private void GenerateButton_Click(object sender, RoutedEventArgs e)
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            var records = dataGrid.View.Records;
+            var generator = new Generator();
+
+            int rowCount = int.Parse(RowCountTextBox.Text);
+
+            string separator = SeparatorTextBox.Text;
+            string path = OutputFileTextBox.Text;
+
+            using (var writer = new StreamWriter(path))
+            {
+                string headers = "";
+
+                foreach (var record in records)
+                {
+                    ColumnInfo column = (ColumnInfo)record.Data;
+
+                    headers += column.ColumnTitle.ToString() + separator;
+                }
+
+                headers = headers.Remove(headers.Length - 1);
+
+                writer.WriteLine(headers);
+                writer.Flush();
+
+                for (int i = 0; i < rowCount; i++)
+                {
+                    var generatedRow = "";
+
+                    foreach (var record in records)
+                    {
+                        ColumnInfo column = (ColumnInfo)record.Data;
+
+                        switch (column.DataType.ToString())
+                        {
+                            case "String":
+                                generatedRow += generator.generateString() + separator;
+                                break;
+                            case "Integer":
+                                generatedRow += generator.generateInteger() + separator;
+                                break;
+                            case "Float":
+                                generatedRow += generator.generateFloat() + separator;
+                                break;
+                            case "Datetime":
+                                generatedRow += generator.generateDatetime() + separator;
+                                break;
+                            case "Boolean":
+                                generatedRow += generator.generateBoolean() + separator;
+                                break;
+                            case "Variant":
+                                generatedRow += generator.generateVariant() + separator;
+                                break;
+                            case "GUID":
+                                generatedRow += generator.generateGUID() + separator;
+                                break;
+                        }
+                    }
+
+                    generatedRow = generatedRow.Remove(generatedRow.Length - 1);
+
+                    writer.WriteLine(generatedRow);
+                    writer.Flush();
+                }
+            }
+
+            sw.Stop();
+
+            string elapsedGenerationTime = (sw.ElapsedMilliseconds / 1000.0).ToString();
+
+            ElapsedGenerationTimeLabel.Text = $"{RowCountTextBox.Text} rows has generated in {elapsedGenerationTime} seconds";
         }
 
         private void FileButton_Click(object sender, RoutedEventArgs e)
