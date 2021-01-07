@@ -7,7 +7,7 @@ using System.IO;
 using System.Diagnostics;
 using System;
 
-namespace WpfApp1
+namespace daterApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

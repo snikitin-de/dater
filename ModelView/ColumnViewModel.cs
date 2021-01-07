@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace WpfApp1
+namespace daterApp
 {
     class ColumnViewModel
     {
