@@ -49,6 +49,11 @@
                 <syncfusion:GridComboBoxColumn MappingName="DataType" HeaderText = "Data Type" x:Name="cmbDataType"/>
                 <syncfusion:GridPercentColumn MappingName="MissingValues" HeaderText = "Missing Values" MinValue="0" MaxValue="100"/>
             </syncfusion:SfDataGrid.Columns>
+            <syncfusion:SfDataGrid.RecordContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="DeleteRow" Header="Delete row" Click="DeleteRow_Click"/>
+                </ContextMenu>
+            </syncfusion:SfDataGrid.RecordContextMenu>
         </syncfusion:SfDataGrid>
         <Grid Margin="0,0,0,24">
             <Grid.RowDefinitions>
