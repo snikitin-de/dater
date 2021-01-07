@@ -80,12 +80,20 @@
                     <ItemsPanelTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="1"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                         </Grid>
                     </ItemsPanelTemplate>
                 </StatusBar.ItemsPanel>
-                <TextBlock Name="ElapsedGenerationTimeLabel"></TextBlock>
+                <StatusBarItem Grid.Column="0">
+                    <TextBlock Name="ElapsedGenerationTimeLabel"></TextBlock>
+                </StatusBarItem>
+                <Separator Name="separatorStatusBar" Width="1" Grid.ColumnSpan="1" HorizontalAlignment="Right" Visibility="Hidden"/>
+                <StatusBarItem Grid.Column="2" >
+                    <ProgressBar Name="generationStatusProgressBar" Minimum="0" Maximum="100" Height="16" MinWidth="200" Visibility="Hidden"/>
+                </StatusBarItem>
             </StatusBar>
         </Grid>
     </Grid>
