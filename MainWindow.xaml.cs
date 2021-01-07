@@ -229,5 +229,15 @@ namespace WpfApp1
                 OutputFileTextBox.Text = filename;
             }
         }
+
+        private void dataGrid_AddNewRowInitiating(object sender, Syncfusion.UI.Xaml.Grid.AddNewRowInitiatingEventArgs e)
+        {
+            var data = e.NewObject as ColumnInfo;
+
+            int rowCount = dataGrid.View.Records.Count;
+
+            data.ColumnTitle = $"col{rowCount + 1}";
+            data.DataType = "String";
+        }
     }
 }

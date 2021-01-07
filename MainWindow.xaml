@@ -43,7 +43,7 @@
                                    AllowSorting="True"
                                    ShowRowHeader="True"
                                    EditTrigger="OnTap"
-                                   SelectionMode="Single" Margin="0,24,0,80" >
+                                   SelectionMode="Single" Margin="0,24,0,80" AddNewRowInitiating="dataGrid_AddNewRowInitiating">
             <syncfusion:SfDataGrid.Columns>
                 <syncfusion:GridTextColumn MappingName="ColumnTitle" HeaderText = "Column Title"/>
                 <syncfusion:GridComboBoxColumn MappingName="DataType" HeaderText = "Data Type" x:Name="cmbDataType"/>
