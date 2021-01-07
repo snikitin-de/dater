@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Syncfusion.SfGrid.WPF" Version="18.4.0.31" />
+    <PackageReference Include="Syncfusion.SfRichTextBoxAdv.WPF" Version="18.4.0.31" />
     <PackageReference Include="Syncfusion.Shared.WPF" Version="18.4.0.31" />
     <PackageReference Include="Syncfusion.Themes.MaterialLight.WPF" Version="18.4.0.31" />
   </ItemGroup>

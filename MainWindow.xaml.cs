@@ -255,5 +255,12 @@ namespace DaterApp
             data.ColumnTitle = $"col{rowCount + 1}";
             data.DataType = "String";
         }
+
+        private void DeleteRow_Click(object sender, RoutedEventArgs e)
+        {
+            int selectedIndex = dataGrid.SelectedIndex;
+
+            dataGrid.View.Records.RemoveAt(selectedIndex);
+        }
     }
 }
