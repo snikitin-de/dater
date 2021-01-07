@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace daterApp
+namespace DaterApp
 {
     class ColumnInfo : INotifyPropertyChanged
     {
