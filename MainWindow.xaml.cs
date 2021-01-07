@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using Microsoft.Win32;
 using System.IO;
 using System.Diagnostics;
+using System;
 
 namespace WpfApp1
 {
@@ -49,11 +50,26 @@ namespace WpfApp1
             {
                 string headers = "";
 
+                int rowIndex = 1;
+
                 foreach (var record in records)
                 {
                     ColumnInfo column = (ColumnInfo)record.Data;
 
-                    headers += column.ColumnTitle.ToString() + separator;
+                    string header = $"col{rowIndex}";
+
+                    if (column.ColumnTitle != null)
+                    {
+                        string columnTitle = column.ColumnTitle.ToString();
+
+                        if (!String.IsNullOrEmpty(columnTitle))
+                        {
+                            header = columnTitle;
+                        }
+                    }
+
+                    headers += header + separator;
+                    rowIndex++;
                 }
 
                 headers = headers.Remove(headers.Length - 1);
