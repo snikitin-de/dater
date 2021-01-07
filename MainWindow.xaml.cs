@@ -38,6 +38,16 @@ namespace DaterApp
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
+            if (separatorStatusBar.Visibility == Visibility.Hidden)
+            {
+                separatorStatusBar.Visibility = Visibility.Visible;
+            }
+
+            if (generationStatusProgressBar.Visibility == Visibility.Hidden)
+            {
+                generationStatusProgressBar.Visibility = Visibility.Visible;
+            }
+
             var records = dataGrid.View.Records;
             var generator = new Generator();
 
